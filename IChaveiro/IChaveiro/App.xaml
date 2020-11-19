@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="IChaveiro.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms">
+    <Application.Resources>
+
+        <Style TargetType="Grid">
+            <Setter Property="BackgroundColor" Value="#F7F7D7" />
+        </Style>
+
+        <Style TargetType="ScrollView">
+            <Setter Property="BackgroundColor" Value="#F7F7D7" />
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="#F7F7D7" />
+        </Style>
+
+        <Style TargetType="FlexLayout">
+            <Setter Property="BackgroundColor" Value="#F7F7D7" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="TitleColor" Value="#BA" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="CornerRadius" Value="{OnPlatform Android=35, iOS=20}" />
+        </Style>
+
+        <Style TargetType="Editor">
+            <Setter Property="PlaceholderColor" Value="#BA" />
+        </Style>
+
+        <Style x:Key="DefaultImage" TargetType="Image">
+            <Setter Property="FlexLayout.Basis" Value="30" />
+            <Setter Property="HeightRequest" Value="30" />
+        </Style>
+
+        <Style x:Key="DefaultItem" TargetType="Label">
+            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="Padding" Value="20,0,0,0" />
+            <Setter Property="FlexLayout.Grow" Value="1" />
+        </Style>
+
+        <Style x:Key="ArrowIconItem" TargetType="Image">
+            <Setter Property="FlexLayout.Basis" Value="18" />
+            <Setter Property="HeightRequest" Value="18" />
+            <Setter Property="Source" Value="right_arrow" />
+        </Style>
+
+        <Style x:Key="SeparatorItem" TargetType="BoxView">
+            <Setter Property="BackgroundColor" Value="#E5E5E5" />
+            <Setter Property="HeightRequest" Value="1" />
+        </Style>
+
+    </Application.Resources>
+</prism:PrismApplication>

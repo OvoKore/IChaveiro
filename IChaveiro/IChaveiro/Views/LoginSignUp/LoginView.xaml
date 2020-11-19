@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IChaveiro.Views.LoginSignUp.LoginView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviorPack="clr-namespace:Xamarin.Forms.BehaviorValidationPack;assembly=Xamarin.Forms.BehaviorValidationPack">
+    <ContentPage.Content>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Margin="0,0,0,10"
+                Source="logo.png" />
+
+            <Entry
+                x:Name="email"
+                Grid.Row="1"
+                Placeholder="Email"
+                Text="{Binding Email}">
+                <Entry.Behaviors>
+                    <behaviorPack:EmailValidationBehavior />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry
+                Grid.Row="2"
+                IsPassword="True"
+                Placeholder="Password"
+                Text="{Binding Password}" />
+
+            <Button
+                Grid.Row="3"
+                BackgroundColor="Green"
+                Command="{Binding LoginCommand}"
+                Text="Login" />
+
+            <Label Grid.Row="5" Text="Not a member? Sign Up!" />
+            <Button
+                Grid.Row="6"
+                BackgroundColor="Red"
+                Command="{Binding SignUpCommand}"
+                Text="Sign Up"
+                VerticalOptions="End" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="json\City.json" />
+    <None Remove="json\State.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="json\City.json" />
+    <EmbeddedResource Include="json\State.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
+    <PackageReference Include="Prism.Core" Version="7.2.0.1422" />
+    <PackageReference Include="Realm" Version="5.1.2" />
+    <PackageReference Include="Refit" Version="5.2.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1422" />
+    <PackageReference Include="Xamarin.Forms.BehaviorValidationPack" Version="1.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controls\CustomContentPage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\LoginSignUp\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\LoginSignUp\SignUpView.xaml.cs">
+      <DependentUpon>SignUpView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MenuView.xaml.cs">
+      <DependentUpon>MenuView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\Base\" />
+    <Folder Include="Views\Configurations\" />
+    <Folder Include="Views\LoginSignUp\" />
+    <Folder Include="ViewModels\Configurations\" />
+    <Folder Include="ViewModels\LoginSignUp\" />
+    <Folder Include="Views\Services\" />
+    <Folder Include="ViewModels\Services\" />
+    <Folder Include="ViewModels\Configurations\Address\" />
+    <Folder Include="Views\Configurations\Address\" />
+    <Folder Include="DTO\" />
+    <Folder Include="ModelRealm\" />
+  </ItemGroup>
+</Project>

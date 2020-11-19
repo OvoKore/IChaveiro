@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="IChaveiro.Views.Configurations.Address.AddressView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView
+                    x:Name="collectionView"
+                    EmptyView="Cadastre seu endereço principal"
+                    ItemsSource="{Binding ListAddress}"
+                    VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            BackgroundColor="Gray"
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.EditAddressCommand}"
+                                            CommandParameter="{Binding .}"
+                                            IconImageSource="config.png"
+                                            Text="Edit" />
+                                        <SwipeItem
+                                            BackgroundColor="Red"
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DeleteAddressCommand}"
+                                            CommandParameter="{Binding .}"
+                                            IconImageSource="delete.png"
+                                            Text="Delete" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <Frame
+                                    Padding="5"
+                                    HasShadow="True"
+                                    VerticalOptions="Start">
+                                    <Frame.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding main}"
+                                            TargetType="Frame"
+                                            Value="True">
+                                            <Setter Property="BackgroundColor" Value="Red" />
+                                        </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding main}"
+                                            TargetType="Frame"
+                                            Value="False">
+                                            <Setter Property="BackgroundColor" Value="#BA" />
+                                        </DataTrigger>
+                                    </Frame.Triggers>
+
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="2" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="20" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            FontSize="Title"
+                                            Text="{Binding name}" />
+
+                                        <BoxView
+                                            Grid.Row="1"
+                                            HeightRequest="2"
+                                            HorizontalOptions="Fill"
+                                            Color="Gray" />
+
+                                        <Label
+                                            Grid.Row="2"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding cep, StringFormat='CEP: {0}'}" />
+                                        <Label
+                                            Grid.Row="3"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding uf, StringFormat='Estado: {0}'}" />
+                                        <Label
+                                            Grid.Row="4"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding cidade, StringFormat='Cidade: {0}'}" />
+                                        <Label
+                                            Grid.Row="5"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding bairro, StringFormat='Bairro: {0}'}" />
+
+                                        <Label
+                                            Grid.Row="6"
+                                            HorizontalOptions="Start"
+                                            Text="{Binding logradouro}" />
+
+                                        <Grid Grid.Row="7">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="35*" />
+                                                <ColumnDefinition Width="60*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Column="0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding numero, StringFormat='Nº: {0}'}" />
+                                            <Label
+                                                Grid.Column="1"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding complemento, StringFormat='Compl: {0}'}" />
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Frame>
+                            </SwipeView>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </RefreshView>
+            <Button
+                BackgroundColor="Green"
+                Command="{Binding NewAddressCommand}"
+                Text="Add"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

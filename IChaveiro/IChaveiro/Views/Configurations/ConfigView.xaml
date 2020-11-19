@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="IChaveiro.Views.Configurations.ConfigView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <FlexLayout
+                Padding="20,0"
+                AlignItems="Center"
+                HeightRequest="60">
+                <Image Source="profile" Style="{StaticResource DefaultImage}" />
+                <Label Style="{StaticResource DefaultItem}" Text="Online" />
+                <Switch IsToggled="{Binding Status, Mode=TwoWay}" />
+            </FlexLayout>
+            <BoxView Style="{StaticResource SeparatorItem}" />
+
+            <FlexLayout
+                Padding="20,0"
+                AlignItems="Center"
+                HeightRequest="60">
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ProfileCommand}" />
+                </FlexLayout.GestureRecognizers>
+                <Image Source="profile" Style="{StaticResource DefaultImage}" />
+                <Label Style="{StaticResource DefaultItem}" Text="Profile" />
+                <Image Style="{StaticResource ArrowIconItem}" />
+            </FlexLayout>
+            <BoxView Style="{StaticResource SeparatorItem}" />
+
+            <FlexLayout
+                Padding="20,0"
+                AlignItems="Center"
+                HeightRequest="60">
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddressCommand}" />
+                </FlexLayout.GestureRecognizers>
+                <Image Source="home" Style="{StaticResource DefaultImage}" />
+                <Label Style="{StaticResource DefaultItem}" Text="Address" />
+                <Image Style="{StaticResource ArrowIconItem}" />
+            </FlexLayout>
+            <BoxView Style="{StaticResource SeparatorItem}" />
+
+            <FlexLayout
+                Padding="20,0"
+                AlignItems="Center"
+                HeightRequest="60">
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AboutCommand}" />
+                </FlexLayout.GestureRecognizers>
+
+                <Image Source="about" Style="{StaticResource DefaultImage}" />
+                <Label Style="{StaticResource DefaultItem}" Text="About" />
+                <Image Style="{StaticResource ArrowIconItem}" />
+            </FlexLayout>
+            <BoxView Style="{StaticResource SeparatorItem}" />
+
+            <Button
+                Margin="20"
+                BackgroundColor="Red"
+                Command="{Binding LogoutCommand}"
+                HeightRequest="60"
+                Text="Logout"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

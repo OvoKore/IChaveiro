@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="IChaveiro.Views.Configurations.AboutView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <FlexLayout
+                Padding="20,0"
+                AlignItems="Center"
+                HeightRequest="60">
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PrivacyCommand}" />
+                </FlexLayout.GestureRecognizers>
+                <Label Style="{StaticResource DefaultItem}" Text="Privacy Policy" />
+                <Image Style="{StaticResource ArrowIconItem}" />
+            </FlexLayout>
+            <BoxView Style="{StaticResource SeparatorItem}" />
+
+            <FlexLayout
+                Padding="20,0"
+                AlignItems="Center"
+                HeightRequest="60">
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TermsUseCommand}" />
+                </FlexLayout.GestureRecognizers>
+                <Label Style="{StaticResource DefaultItem}" Text="Terms of Use" />
+                <Image Style="{StaticResource ArrowIconItem}" />
+            </FlexLayout>
+            <BoxView Style="{StaticResource SeparatorItem}" />
+
+            <FlexLayout
+                Padding="20,0"
+                AlignItems="Center"
+                HeightRequest="60">
+                <Label
+                    Style="{StaticResource DefaultItem}"
+                    Text="{Binding Version}"
+                    TextColor="Gray" />
+            </FlexLayout>
+            <BoxView Style="{StaticResource SeparatorItem}" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
