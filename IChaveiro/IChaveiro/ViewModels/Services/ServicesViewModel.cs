@@ -39,6 +39,12 @@ namespace IChaveiro.ViewModels.Services
             }
         }
 
+        public override void RefreshAsync()
+        {
+            GetServiceList();
+            IsRefreshing = false;
+        }
+
         public async void GetServiceList()
         {
             try

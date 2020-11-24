@@ -6,91 +6,93 @@
 
     <ContentPage.Content>
         <StackLayout Padding="10">
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView
+                    x:Name="collectionView"
+                    EmptyView="Cadastre seus serviços"
+                    ItemsSource="{Binding Services}"
+                    VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
 
-            <CollectionView
-                x:Name="collectionView"
-                ItemsSource="{Binding Services}"
-                VerticalOptions="FillAndExpand">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            BackgroundColor="Gray"
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.EditServiceCommand}"
+                                            CommandParameter="{Binding .}"
+                                            IconImageSource="config.png"
+                                            Text="Edit" />
+                                        <SwipeItem
+                                            BackgroundColor="Red"
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DeleteServiceCommand}"
+                                            CommandParameter="{Binding .}"
+                                            IconImageSource="delete.png"
+                                            Text="Delete" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Frame
+                                    Margin="5"
+                                    Padding="5"
+                                    BackgroundColor="AliceBlue"
+                                    CornerRadius="25"
+                                    HasShadow="True"
+                                    VerticalOptions="Start">
 
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItem
-                                        BackgroundColor="Gray"
-                                        Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.EditServiceCommand}"
-                                        CommandParameter="{Binding .}"
-                                        IconImageSource="config.png"
-                                        Text="Edit" />
-                                    <SwipeItem
-                                        BackgroundColor="Red"
-                                        Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DeleteServiceCommand}"
-                                        CommandParameter="{Binding .}"
-                                        IconImageSource="delete.png"
-                                        Text="Delete" />
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <Frame
-                                Margin="5"
-                                Padding="5"
-                                BackgroundColor="AliceBlue"
-                                CornerRadius="25"
-                                HasShadow="True"
-                                VerticalOptions="Start">
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="2" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="1" />
+                                            <RowDefinition Height="20" />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="99*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Column="1"
+                                                FontAttributes="Bold"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding name}" />
+                                        </Grid>
 
-                                <Grid HorizontalOptions="FillAndExpand">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="20" />
-                                        <RowDefinition Height="2" />
-                                        <RowDefinition Height="*" />
-                                        <RowDefinition Height="1" />
-                                        <RowDefinition Height="20" />
-                                    </Grid.RowDefinitions>
-                                    <Grid Grid.Row="0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*" />
-                                            <ColumnDefinition Width="99*" />
-                                        </Grid.ColumnDefinitions>
+                                        <BoxView
+                                            Grid.Row="1"
+                                            HeightRequest="2"
+                                            HorizontalOptions="Fill"
+                                            Color="Gray" />
                                         <Label
-                                            Grid.Column="1"
-                                            FontAttributes="Bold"
+                                            Grid.Row="2"
                                             HorizontalOptions="Start"
-                                            Text="{Binding name}" />
+                                            Text="{Binding description}" />
+
+                                        <BoxView
+                                            Grid.Row="3"
+                                            HeightRequest="1"
+                                            HorizontalOptions="Fill"
+                                            Color="Gray" />
+
+                                        <Grid Grid.Row="4">
+                                            <Label Grid.Column="0" Text="{Binding low_price, StringFormat='Low: R${0}'}" />
+                                            <Label Grid.Column="1" Text="{Binding high_price, StringFormat='High: R${0}'}" />
+                                        </Grid>
+
                                     </Grid>
 
-                                    <BoxView
-                                        Grid.Row="1"
-                                        HeightRequest="2"
-                                        HorizontalOptions="Fill"
-                                        Color="Gray" />
-                                    <Label
-                                        Grid.Row="2"
-                                        HorizontalOptions="Start"
-                                        Text="{Binding description}" />
-
-                                    <BoxView
-                                        Grid.Row="3"
-                                        HeightRequest="1"
-                                        HorizontalOptions="Fill"
-                                        Color="Gray" />
-
-                                    <Grid Grid.Row="4">
-                                        <Label Grid.Column="0" Text="{Binding low_price, StringFormat='Low: R${0}'}" />
-                                        <Label Grid.Column="1" Text="{Binding high_price, StringFormat='High: R${0}'}" />
-                                    </Grid>
-
-                                </Grid>
-
-                            </Frame>
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </Frame>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
 
             <StackLayout>
                 <Button

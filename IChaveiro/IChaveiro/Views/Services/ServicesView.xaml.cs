@@ -10,7 +10,7 @@ namespace IChaveiro.Views.Services
         public ServicesView()
         {
             InitializeComponent();
-            Title = "Services";
+            Title = "Serviços";
             IconImageSource = ImageSource.FromFile("services.png");
             NavigationPage.SetHasNavigationBar(this, false);
             On<iOS>().SetUseSafeArea(true);

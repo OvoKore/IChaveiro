@@ -167,6 +167,11 @@ namespace IChaveiro.ViewModels.Configurations.Address
                 City = AllCidades.Where(x => x.State == State.ID && x.Name == Cidade).First();
                 EnderecoHabilitado = false;
             }
+            else
+            {
+                Main = true;
+            }
+            HasInitialized = true;
         }
 
         public override void Destroy()

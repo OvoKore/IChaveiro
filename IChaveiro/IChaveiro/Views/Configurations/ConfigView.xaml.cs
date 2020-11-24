@@ -10,7 +10,7 @@ namespace IChaveiro.Views.Configurations
         public ConfigView()
         {
             InitializeComponent();
-            Title = "Configurations";
+            Title = "Configuração";
             IconImageSource = ImageSource.FromFile("config.png");
             NavigationPage.SetHasNavigationBar(this, false);
             On<iOS>().SetUseSafeArea(true);
